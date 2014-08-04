@@ -1,0 +1,32 @@
+{% extends 'gbook/base.html' %}
+
+{% block title %}
+Guestbook - все пользователи
+{% endblock %}
+
+{% block container %}
+<h1>Все пользователи Guestbook</h1>
+    <ul>
+        {% for name in names %}
+        <li><a href="{% url 'user_posts' %}?name={{ name }}">{{ name }}</a></li>
+        {% endfor %}
+    </ul> 
+{% if names.paginator.num_pages > 1 %}
+<div class="pagination">
+    <span class="step-links">
+        {% if names.has_previous %}
+        <a href="?page={{ names.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+        <span class="pages">
+            {% for number in names.paginator.page_range %}
+            <a href="?page={{ number }}">{{ number }}</a>
+            {% endfor %}
+        </span>
+        {% if names.has_next %}
+        <a href="?page={{ names.next_page_number }}">Следующая</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}     
+{% endblock %} 
+     

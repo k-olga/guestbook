@@ -1,0 +1,30 @@
+{% extends 'gbook/base.html' %}
+
+{% block title %}
+Guestbook - все записи пользователя {{ name }}
+{% endblock %}
+
+{% block container %}
+<h1>Все посты {{ name }}</h1>
+{% for post in name_posts %}
+   <time>{{ post.creation_date|date:"d F Y, G:i" }}</time> 
+   <p id='space'>{{ post.text }}</p> 
+{% endfor %}
+{% if name_posts.paginator.num_pages > 1 %}
+<div class="pagination">
+   <span class="step-links">
+       {% if name_posts.has_previous %}
+       <a href="?name={{ name }}&page={{ name_posts.previous_page_number }}">Предыдущая</a>
+       {% endif %}
+       <span class="page">
+          {% for number in name_posts.paginator.page_range %}
+          <a href="?name={{ name }}&page={{ number }}">{{ number }}</a>
+          {% endfor %}
+       </span>
+       {% if name_posts.has_next %}
+       <a href="?name={{ name }}&page={{ name_posts.next_page_number }}">Следующая</a>
+       {% endif %}
+   </span>
+</div>
+{% endif %}     
+{% endblock %}

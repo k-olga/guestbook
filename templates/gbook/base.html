@@ -1,0 +1,116 @@
+{% load i18n %}
+<!DOCTYPE html>
+    <html> 
+        <head>
+	        <meta charset="utf-8">
+	        <title>  
+          {% block title %}
+          {% endblock %}
+          </title>
+	        <meta name="description" content="">
+	        <meta name="viewport" content="width=device-width">
+	        <link href="{{ STATIC_URL }}/main/css/style.css" rel="stylesheet" type="text/css">
+          <link href="{{ STATIC_URL }}/main/image/favicon_.ico" rel="shortcut icon">
+          <style>
+          .header a img {
+           display: block;
+           height: 14px;
+           width: 36px;
+           margin: 5px auto 0 auto; 
+          }
+          
+          /*list_posts*/
+          .container p span {
+           font: bold 15px sans-serif;
+           display: block;
+           margin: 5px 0 10px 0;
+          }
+          
+          .pagination {
+           margin: 30px 0 20px 0;
+          }
+          .pagination span a:link,
+          .pagination span a:visited {
+           color: #92CC47;
+          }
+          .pagination span a:hover,
+          .pagination span a:active {
+           text-decoration: underline;
+          }
+                   
+          time {
+           color: #999999;
+           font-style: italic;
+           font-size: 12px;
+           display: block;
+           margin-bottom: 6px;
+          }
+          #space {
+           padding-bottom: 15px;
+           border-bottom: 1px dashed #bde090;
+          }
+          
+          .form_wrap {
+           width: 960px;
+           margin: 26px auto 0;           
+          }
+          .form_wrap > h2 {
+           margin-bottom: 25px;
+           font-size: 18px;
+           color: #0A6629;
+          }
+          th {
+           text-align: left;
+           vertical-align: top;
+          }           
+          ul.errorlist {
+           color: red;
+           margin-left: 10px;            
+          }          
+          form p {
+           margin-top: 15px; 
+          }
+          input[type="submit"] {
+           font: normal 14px sans-serif;
+           padding: 4px;                   
+          } 
+          
+          /*list_users*/
+          .container li a:link,
+          .container li a:visited {
+           font-size: 15px;
+           line-height: 2;
+           color: #3C3A3A;                        
+          }
+          .container li a:hover,
+          .container li a:active {
+           text-decoration: underline; 
+          }
+           
+          </style>
+        </head>  
+        <body> 
+	         <div class="wrapper">
+             <div class="header">
+                  <p>Django<span>Guestbook</span></p>
+                  {% block header %}
+                  {% endblock %}
+                  <div class="menu">
+                  <nav>
+			                <a href="{% url 'gb_main_page' %}">Главная</a>
+                      <a href="{% url 'list_users' %}">Пользователи</a>
+		              </nav>
+                  </div>
+              </div>
+              <div class="container">
+                    {% block container %}
+                    {% endblock %}
+              </div>
+	            <div class="footer">
+			        <p>Все права защищены</p>
+			        <p>2014</p>
+		        </div>
+	        </div>
+        </body>
+    </html>
+    

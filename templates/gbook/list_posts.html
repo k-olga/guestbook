@@ -1,0 +1,48 @@
+{% extends 'gbook/base.html' %}
+
+{% block title %}Guestbook - главная страница{% endblock %}
+
+{% block header %}
+<a href="{% url 'rss_view' %}" ><img src="{{ STATIC_URL }}/main/image/rss.gif" \
+alt="rss-logo" /></a>
+<a href="{% url 'xml_view' %}" ><img src="{{ STATIC_URL }}/main/image/xml.gif" \
+alt="rss-logo" /></a>
+{% endblock %}
+
+{% block container %}
+{% if posts.paginator.num_pages > 1 %}
+ <div class="pagination">
+     <span class="step-links">
+         {% if posts.has_previous %}
+         <a href="?page={{ posts.previous_page_number }}">Предыдущая</a>
+         {% endif %}
+         <span class="pages">
+             {% for number in posts.paginator.page_range %}
+             <a href="?page={{ number }}">{{ number }}</a>
+             {% endfor %}
+         </span>                                  
+         {% if posts.has_next %}
+         <a href="?page={{ posts.next_page_number }}">Следующая</a>
+         {% endif %}
+     </span>
+ </div>
+{% endif %} 
+{% for post in posts %}    
+<p><span>{{ post.name }}</span></p>
+<time>{{ post.creation_date|date:"d F Y, G:i" }}</time> 
+<p id='space'>{{ post.text }}</p> 
+{% endfor %} 
+ 
+ <div class="form_wrap">
+     <h2>Оставить запись в гостевой книге</h2>
+     <form action="" method="POST">
+         {% csrf_token %}
+         <table>
+         {{ form }}  
+         </table>
+         {{ datetime_now }}
+         <p><input type="submit" value="Отправить"></p>
+     </form>	
+ </div> 
+{% endblock %} 
+   
