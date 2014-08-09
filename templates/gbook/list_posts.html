@@ -3,10 +3,12 @@
 {% block title %}Guestbook - главная страница{% endblock %}
 
 {% block header %}
+<figure>
 <a href="{% url 'rss_view' %}" ><img src="{{ STATIC_URL }}/main/image/rss.gif" \
-alt="rss-logo" /></a>
-<a href="{% url 'xml_view' %}" ><img src="{{ STATIC_URL }}/main/image/xml.gif" \
-alt="rss-logo" /></a>
+alt="rss-logo" />RSS</a>
+<a href="{% url 'xml_view' %}" ><img src="{{ STATIC_URL }}/main/image/rss.gif" \
+alt="rss-logo" />XML</a>
+</figure>
 {% endblock %}
 
 {% block container %}

@@ -16,7 +16,7 @@ Guestbook - все записи пользователя {{ name }}
        {% if name_posts.has_previous %}
        <a href="?name={{ name }}&page={{ name_posts.previous_page_number }}">Предыдущая</a>
        {% endif %}
-       <span class="page">
+       <span class="pages">
           {% for number in name_posts.paginator.page_range %}
           <a href="?name={{ name }}&page={{ number }}">{{ number }}</a>
           {% endfor %}

@@ -7,20 +7,17 @@
           {% block title %}
           {% endblock %}
           </title>
-	        <meta name="description" content="">
+	        <meta name="keywords" content="">
+          <meta name="description" content="">
 	        <meta name="viewport" content="width=device-width">
 	        <link href="{{ STATIC_URL }}/main/css/style.css" rel="stylesheet" type="text/css">
-          <link href="{{ STATIC_URL }}/main/image/favicon_.ico" rel="shortcut icon">
+          <link href="{{ STATIC_URL }}/main/image/favicon_.ico" rel="shortcut icon">           
           <style>
-          .header a img {
-           display: block;
-           height: 14px;
-           width: 36px;
-           margin: 5px auto 0 auto; 
-          }
-          
+          header a img {
+           margin-right: 5px; 
+          }          
           /*list_posts*/
-          .container p span {
+          main p span {
            font: bold 15px sans-serif;
            display: block;
            margin: 5px 0 10px 0;
@@ -34,10 +31,13 @@
            color: #92CC47;
           }
           .pagination span a:hover,
-          .pagination span a:active {
+          .pagination span a:active,
+          figure a:hover, figure a:active {
            text-decoration: underline;
           }
-                   
+          .pagination span a.act {
+           color: #3C3A3A;
+          }         
           time {
            color: #999999;
            font-style: italic;
@@ -76,41 +76,47 @@
           } 
           
           /*list_users*/
-          .container li a:link,
-          .container li a:visited {
+          main li a:link,
+          main li a:visited {
            font-size: 15px;
            line-height: 2;
            color: #3C3A3A;                        
           }
-          .container li a:hover,
-          .container li a:active {
+          main li a:hover,
+          main li a:active {
            text-decoration: underline; 
-          }
-           
+          }           
           </style>
+          
+          <!--[if lt IE 9]>
+              <script src="{{ STATIC_URL }}/main/js/html5shiv.js"></script>
+          <![endif]-->
+          <script src="{{ STATIC_URL }}main/js/links.js"></script>
         </head>  
         <body> 
-	         <div class="wrapper">
-             <div class="header">
-                  <p>Django<span>Guestbook</span></p>
-                  {% block header %}
-                  {% endblock %}
-                  <div class="menu">
-                  <nav>
-			                <a href="{% url 'gb_main_page' %}">Главная</a>
-                      <a href="{% url 'list_users' %}">Пользователи</a>
-		              </nav>
-                  </div>
-              </div>
-              <div class="container">
+	          <div class="wrapper">
+                <header>
+                    <p>Django<span>Guestbook</span></p>
+                    {% block header %}
+                    {% endblock %}
+                    <div class="menu">
+                        <nav id="nav">
+      			                <a href="{% url 'gb_main_page' %}">Главная</a>
+                            <a href="{% url 'list_users' %}">Пользователи</a>
+      		              </nav>
+                    </div>
+                </header>
+                <main>
                     {% block container %}
                     {% endblock %}
-              </div>
-	            <div class="footer">
-			        <p>Все права защищены</p>
-			        <p>2014</p>
-		        </div>
-	        </div>
+                </main>
+	          </div> 
+            <footer>
+			          <p>Все права защищены</p>
+			          <p>2014</p>
+		        </footer>
+	         
+                        
         </body>
     </html>
     

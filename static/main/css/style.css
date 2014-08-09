@@ -1,8 +1,7 @@
 @import url(reset.css);
 
 html {
-  min-height: 100%;
-  height: auto;
+  height: 100%;
 }
 
 textarea {
@@ -54,28 +53,35 @@ body {
   font: 14px/1.5 Geneva, Arial, Helvetica, sans-serif;
   color: #3C3A3A;
   background: #FFFFFF; 
-  height: 100%; 
-  min-height: auto;   
+  height: 100%;     
 }
 a, a:hover {
   text-decoration: none;
 }
 a:focus {
-   outline: none;
+  outline: none;
 }
+
 .wrapper {
-  min-height: 100%;
-  height: auto;
-  max-width: 1920px;
   min-width: 960px;
-  width: 100%;     
+  max-width: 1920px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto;       
 }
-.header {
+header {
+  display: block;
   height: 140px;
-  background: #F7F7F7;
+  background: url(../image/background.png) 0 0 repeat;
   border-top: 6px solid #085221;
   border-bottom: 6px solid #085221;
-  position: relative;      
+  position: relative;                
+}
+figure {
+  display: block;
+  width: 960px;
+  margin: 5px auto 0 auto;   
 }
 .menu {
   height: 34px;
@@ -90,11 +96,17 @@ a:focus {
   bottom: 0;
 }
 nav {
+  display: block;
   width: 960px;
   margin: 3px auto 0 auto;
+}
+nav a {
+  display: block;
+  float: left;
 } 
 nav a:link, nav a:visited {
   color: #92CC47;
+  text-shadow: -3px 3px 3px #2b3d15;
   font-size: 18px; 
   font-weight: bold;  
 }
@@ -103,39 +115,49 @@ nav a:hover {
 }
 nav a:first-child {
   padding-right: 15px;
-  border-right: 2px solid #c8e5a3;   
+  border-right: 1.5px solid #2F7D49;   
 }
 nav a:nth-child(2) {
-  padding-left: 10px;           
+  padding-left: 10px;
+  border-left: 1.5px solid #A3C5AE;           
 }
-.container {
-  overflow: auto;
+#nav a.act {
+  color: #e9f4da;  
+}
+main {
+  display: block;
   width: 960px;
-  margin: 15px auto;   
+  margin: 15px auto;
+  padding: 0 0 30px;   
 }
-.container h1 {
+main h1 {
   margin: 35px 0 25px 0;
   font-size: 25px;
   font-weight: 700;
   color: #0A6629;   
 }
 
-.footer {
-  font-size: 10px;
-  color: #5f5f5f;
+footer {
+  display: block;
+  position: relative;
   padding: 6px 0;
-  margin: 0 auto;
-  border-top: 3px double #dedede;
+  margin: -30px auto 0;
+  min-width: 960px;
+	max-width: 1920px;
   height: 30px;
-        
+  border-top: 3px double #dedede;
+  font-size: 10px;
+  color: #5f5f5f;            
 }
-.footer p {
+footer p {
   text-align: center;
 }
-.header p {
+header p {
   font: normal bold 45px sans-serif;
   text-align: center;
+  margin-top: 20px;
 }
-.header p span {
-  color: #92CC47;  
+header p span {
+  color: #92CC47; 
+  text-shadow: 3px 3px 3px #2b3d15; 
 }
